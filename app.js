@@ -14,7 +14,6 @@ const phrases = [
   "on thin ice"
 ];
 const phraseUl = document.getElementsByTagName("ul")[0];
-let phraseArray = getRandomPhraseAsArray(phrases);
 const keyboardKeys = document.getElementsByTagName("button");
 
 
@@ -55,6 +54,7 @@ function checkLetter(selectedButton) {
     if(selectedButton === letters[i].textContent) {
       letterMatch = true;
       letters[i].classList.add("show");
+      letters[i].style.transition = '2s';
      }
 } if(letterMatch) {
     return selectedButton;
@@ -85,6 +85,9 @@ function checkWin(){
 
 }
 
+////////////////////////////////////////
+//////EVENT LISTENERS///////////////////
+////////////////////////////////////////
 
 // pointer on hover
 
@@ -95,6 +98,7 @@ resetButton.addEventListener("mouseover", (e) => {
 // clicking the button starts/resets the game
 
 resetButton.addEventListener("click", (e) => {
+  let phraseArray = getRandomPhraseAsArray(phrases);
   phraseUl.innerHTML = "";
   addPhraseToDisplay(phraseArray);
   missed = 0;
